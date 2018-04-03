@@ -1,5 +1,7 @@
 # bad-gru-meme-generator
-Don't let your memes be dreams.  Unless those memes involve learning Bootstrap and HTML5 canvases.
+### Don't let your memes be dreams.  Unless those memes involve learning Bootstrap and HTML5 canvases.
+
+#### Known Bugs
 
 * Image may not load sometimes.  Resolve by executing a combination of actions including refreshing the page, restarting the web browser, and power cycling the computer until it works.
 
