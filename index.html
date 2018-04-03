@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        .input-label {
+            font-size: 20px;
+        }
+        
+        form {
+            padding-top: 20px;
+        }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-primary text-center">Gru Meme Generator</h1>
+
+        <div class="row text-center">
+            <canvas id="myCanvas" width="578" height="377" style="display:none;"></canvas>
+            <img id="canvasImg" alt="Right click to save me!">
+        </div>
+        <div class = "row text-center">
+<form>
+  <div class="form-group">
+      <div class="row">
+        <div class="col-lg-2 input-label text-primary">
+            Panel 1:
+        </div>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" id="panel0-input">
+        </div>
+      </div>
+  </div>
+            
+  <div class="form-group">
+      <div class="row">
+        <div class="col-lg-2 input-label text-primary">
+            Panel 2:
+        </div>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" id="panel1-input">
+        </div>
+      </div>
+  </div>
+            
+            
+  <div class="form-group">
+      <div class="row">
+        <div class="col-lg-2 input-label text-primary">
+            Panel 3:
+        </div>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" id="panel2-input">
+        </div>
+      </div>
+  </div>
+            
+            
+  <div class="form-group">
+      <div class="row">
+        <div class="col-lg-2 input-label text-primary">
+            Panel 4:
+        </div>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" id="panel3-input">
+        </div>
+      </div>
+  </div>
+
+  <button onclick="drawText()" type="button" class="btn btn-primary">Submit</button>
+</form>
+        </div>
+    </div>
+
+<script>
+var canvas = document.getElementById('myCanvas');
+var context = canvas.getContext('2d');
+var gru = new Image();
+gru.src = "gru2.png";
+canvas.height = gru.height;
+canvas.width = gru.width;
+context.drawImage(gru, 0, 0);
+    
+// save canvas image as data url (png format by default)
+var dataURL = canvas.toDataURL();
+
+// set canvasImg image src to dataURL
+// so it can be saved as an image
+document.getElementById('canvasImg').src = dataURL;
+    
+    function drawText() {
+        
+        //Draw bg image to clear canvas
+        context.drawImage(gru, 0, 0);
+        
+        context.font = "26px Impact";
+        context.strokeStyle = "black";
+        context.lineWidth = 8;
+        context.fillStyle = "white";
+        
+        //Which panel we are drawing
+        var panelNumber = 0;
+        
+        //Draw by array
+        for (var row = 0; row < 2; row++) {
+            
+            for (var col = 0; col < 2; col++) {
+                var panelName = "panel" + panelNumber + "-input";
+                var panelText = document.getElementById(panelName).value
+                context.strokeText(panelText, 325 + 490 * col, 75 + 340 * row);
+                context.fillText(panelText, 325 + 490 * col, 75 + 340 * row);
+                panelNumber++;
+            }
+        }
+
+        
+        // save canvas image as data url (png format by default)
+var dataURL = canvas.toDataURL();
+
+// set canvasImg image src to dataURL
+// so it can be saved as an image
+document.getElementById('canvasImg').src = dataURL;
+    }
+
+</script>
+</body>
+</html>      
